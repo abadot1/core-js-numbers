@@ -198,8 +198,13 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -217,8 +222,11 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (String(Number(value)) === 'NaN') {
+    return def;
+  }
+  return Number(value);
 }
 
 /**
@@ -232,8 +240,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -249,8 +257,20 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  let x0 = 0;
+  let x1 = 1;
+  for (let i = 1; i <= index; i += 1) {
+    if (i % 2 === 0 || i === 0) {
+      x0 += x1;
+    } else {
+      x1 = x0 + x1;
+    }
+  }
+  if (index % 2 === 0 || index === 0) {
+    return x0;
+  }
+  return x1;
 }
 
 /**
